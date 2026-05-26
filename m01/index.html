@@ -10,7 +10,7 @@
     <meta name="robots" content="follow, noindex">
     <meta property="og:locale" content="id_ID">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Ridha ðŸ’™ Angga">
+    <meta property="og:title" content="Ridha 💙 Angga">
     <meta property="og:description" content="Hadiri acara pernikahan kami Sabtu, 18 juli 2026">
     <meta property="og:url" content="https://invitimo2.my.id/m01/">
     <meta property="og:site_name" content="Hadiri acara pernikahan kami Sabtu, 18 juli 2026">
@@ -2345,7 +2345,7 @@
                                             data-widget_type="heading.default">
                                             <div class="elementor-widget-container">
                                                 <h2 class="elementor-heading-title elementor-size-default">Kepada
-                                                    Yth.<br>Bapak/Ibu/Saudara/i</h2>
+                                                    Yth.<br><span id="nama-undangan">Bapak/Ibu/Saudara/i</span></h2>
                                             </div>
                                         </div>
                                         <div data-dce-title-color="#333333"
@@ -6021,6 +6021,43 @@
         integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ=="
         data-cf-beacon='{"version":"2024.11.0","token":"5644578f3eb145d7b3bdc41fffbe5c1a","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
         crossorigin="anonymous"></script>
+
+    <!-- Dynamic Guest Personalization (from hash #to= or query ?to=) -->
+    <script>
+        (function () {
+            function getQueryParam(name) {
+                var hash = window.location.hash;
+                if (hash) {
+                    var params = new URLSearchParams(hash.substring(1));
+                    if (params.has(name)) {
+                        return params.get(name);
+                    }
+                }
+                var search = window.location.search;
+                if (search) {
+                    var params = new URLSearchParams(search);
+                    if (params.has(name)) {
+                        return params.get(name);
+                    }
+                }
+                return null;
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                var to = getQueryParam('to');
+                if (to) {
+                    var el = document.getElementById('nama-undangan');
+                    if (el) {
+                        el.textContent = to;
+                    }
+                    var authorInput = document.getElementById('author');
+                    if (authorInput) {
+                        authorInput.value = to;
+                    }
+                }
+            });
+        })();
+    </script>
 
     <!-- RSVP â†’ Google Spreadsheet (deploy: google-apps-script/rsvp-ucapan.gs) -->
     <script>
